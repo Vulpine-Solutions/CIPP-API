@@ -13,11 +13,12 @@ env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
 
 jobs:
-  build-and-deploy:
-    runs-on: windows-latest
+  deploy:
+    runs-on: ubuntu-latest
+
     steps:
       - name: 'Checkout GitHub Action'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
@@ -26,4 +27,6 @@ jobs:
           app-name: 'cippszuab'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9BDF1ED555B24209BB94E20E0F01E96D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_90137D523AA54FB28E8390784CBE5686 }}
+          sku: 'flexconsumption'
+
